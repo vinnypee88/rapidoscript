@@ -1,3 +1,16 @@
+/* This makes sure the letters break at the spaces and doesnt break words */
 #paragraph {
   white-space: normal;
+}
+
+/* Styling for each letter */
+#paragraph span {
+  padding: 0px 1px;
+  margin: 0px 1px;
+  border-radius: 20%;
+}
+
+/* removes border on .focus() */
+#game:focus {
+  outline: none !important;
 }

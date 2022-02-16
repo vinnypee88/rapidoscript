@@ -4,29 +4,30 @@ export const WordsContext = createContext();
 
 const WordsContextProvider = (props) => {
   const text =
-    "const import export let function class return if else props child length map filter true false null constructor this pop require";
-  const otherText =
-    "array children parent round ceiling floor setTimeout prototype string int var float object new slice splice push shift substring replace toUpperCase toLowerCase trim indexOf lastIndexOf includes require json Date";
-  const textArray = text.split("");
-  let textObjectsArray = textArray.map((letter) => {
-    return { letter: letter, color: "text-secondary" };
+    "const import export let function class return if else props child length map filter true false null constructor this pop require push";
+  // const otherText =
+  //   "array children parent round ceiling floor setTimeout prototype string int var float object new slice splice push shift substring replace toUpperCase toLowerCase trim indexOf lastIndexOf includes require json Date";
+  const charArray = text.split("");
+  let charsObjectsArray = charArray.map((letter) => {
+    return { letter: letter, color: "bg-none" };
+    2;
   });
-  const [wordsColor, setWordsColor] = useState(textObjectsArray);
+  const [charsColor, setCharsColor] = useState(charsObjectsArray);
 
   const updateColor = (color, indexMain) => {
-    setWordsColor(
-      wordsColor.filter((word, index) => {
+    setCharsColor(
+      charsColor.filter((letter, index) => {
         if (indexMain === index) {
-          word.color = color;
+          letter.color = color;
         }
-        return word;
+        return letter;
       })
     );
   };
 
   return (
     <WordsContext.Provider
-      value={{ wordsColor, updateColor, setWordsColor, textObjectsArray }}
+      value={{ charsColor, updateColor, setCharsColor, charsObjectsArray }}
     >
       {props.children}
     </WordsContext.Provider>
