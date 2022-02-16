@@ -1,6 +1,6 @@
 const Banner = () => {
   return (
-    <div className="container text-center">
+    <div className="container text-center my-4">
       <h2>Instructions</h2>
       <p>
         Type the javascript related words as fast as you can. Slowest person
