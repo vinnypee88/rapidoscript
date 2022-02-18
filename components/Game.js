@@ -110,7 +110,9 @@ const Game = () => {
         ref={resultModal}
         data-bs-toggle="modal"
         data-bs-target="#staticBackdrop"
-      ></p>
+      >
+        click modal
+      </p>
     </div>
   );
 };
