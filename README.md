@@ -1,11 +1,13 @@
 
 ## Typing Game for developers
 
-Current Status: In early stage development
-Deployment link: coming soon
+Current Status: Currently building tests for the functionality of the game using jest.
+Coming Soon: Leaderboard stored on Supabase.
+
+Deployment link: https://rapidoscript.vercel.app
+
+This is a very short game which will time how fast a user can type the java script related words. 
 
 
 
 
-
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
