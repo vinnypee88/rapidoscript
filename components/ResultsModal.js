@@ -1,6 +1,13 @@
 import { useEffect } from "react";
 
-const ResultsModal = ({ correct, incorrect, time, restart }) => {
+const ResultsModal = ({
+  correct,
+  incorrect,
+  time,
+  restart,
+  setModalVisible,
+  modalVisible,
+}) => {
   let seconds = time.s;
   let minutes = time.m;
   if (time.s + incorrect > 59) {
@@ -19,20 +26,23 @@ const ResultsModal = ({ correct, incorrect, time, restart }) => {
         tabIndex="-1"
         aria-labelledby="staticBackdropLabel"
         aria-hidden="true"
+        data-testid="results-modal"
+        modalvisible={`${modalVisible}`}
       >
         <div className="modal-dialog">
           <div className="modal-content">
             <div className="modal-body">
               <div className="d-flex flex-column text-center">
                 <h3>Your Score</h3>
-                <div className="">Your time</div>
+                <div>Your time</div>
                 <div className="display-6">
                   {time.m > 9 ? time.m : "0" + time.m}:
                   {time.s > 9 ? time.s : "0" + time.s}:
                   {time.ms > 9 ? time.ms : "0" + time.ms}
                 </div>
-                <div className="">
-                  Penalty: {incorrect} seconds for {incorrect} mistakes
+                <div>
+                  Penalty: {incorrect} {incorrect == 1 ? "second" : "seconds"}{" "}
+                  for {incorrect} {incorrect == 1 ? "mistake" : "mistakes"}
                 </div>
                 <div>Final Score</div>
                 <div className="display-1">
@@ -47,7 +57,10 @@ const ResultsModal = ({ correct, incorrect, time, restart }) => {
                 type="button"
                 className="btn btn-secondary"
                 data-bs-dismiss="modal"
-                onClick={restart}
+                onClick={() => {
+                  restart();
+                  setModalVisible(false);
+                }}
               >
                 Close
               </button>

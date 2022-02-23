@@ -14,6 +14,7 @@ const Game = () => {
   const [index, setIndex] = useState(0);
   const [correct, setCorrect] = useState(0);
   const [incorrect, setIncorrect] = useState(0);
+  const [modalVisible, setModalVisible] = useState(false);
 
   const page = createRef();
   const resultModal = createRef();
@@ -58,6 +59,7 @@ const Game = () => {
     if (index === charsColor.length - 1) {
       stop();
       resultModal.current.click();
+      setModalVisible(true);
     }
     start();
   };
@@ -72,16 +74,26 @@ const Game = () => {
   };
 
   return (
-    <div ref={page} onKeyDown={typed} tabIndex="0" id={styles.game}>
+    <div
+      ref={page}
+      onKeyDown={typed}
+      tabIndex="0"
+      id={styles.game}
+      data-testid="game-container"
+    >
       {/* Text display */}
       <div
         id={styles.tilesContainer}
         className="text-center container col-lg-8 my-4 border-0"
       >
-        <p id={styles.paragraph} className=" fs-4 fw-bold">
+        <p
+          id={styles.paragraph}
+          className=" fs-4 fw-bold"
+          data-testid="js-words"
+        >
           {charsColor.map((letter, index) => {
             return (
-              <span key={index} className={letter.color}>
+              <span key={index} className={letter.color} data-testid="letters">
                 {letter.letter}
               </span>
             );
@@ -95,6 +107,7 @@ const Game = () => {
         <div
           className="rounded-pill border border-2 border-primary fw-bold text-primary bg-warning p-2"
           onClick={restart}
+          data-testid="reset-button"
         >
           reset
         </div>
@@ -104,15 +117,15 @@ const Game = () => {
         correct={correct}
         incorrect={incorrect}
         restart={restart}
+        modalVisible={modalVisible}
+        setModalVisible={setModalVisible}
       />
       {/* modal button */}
       <p
         ref={resultModal}
         data-bs-toggle="modal"
         data-bs-target="#staticBackdrop"
-      >
-        click modal
-      </p>
+      ></p>
     </div>
   );
 };

@@ -4,7 +4,7 @@ export const WordsContext = createContext();
 
 const WordsContextProvider = (props) => {
   const text =
-    "const import export let function class return if else props child length map filter true false null constructor this pop require push";
+    "const import export console.log let function class return if else props child length map filter true false null constructor this pop require push";
   // const otherText =
   //   "array children parent round ceiling floor setTimeout prototype string int var float object new slice splice push shift substring replace toUpperCase toLowerCase trim indexOf lastIndexOf includes require json Date";
   const charArray = text.split("");
